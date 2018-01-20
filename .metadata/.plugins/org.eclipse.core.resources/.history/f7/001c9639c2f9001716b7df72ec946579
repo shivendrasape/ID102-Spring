@@ -1,0 +1,22 @@
+package com.myapp.spring.di;
+
+import java.util.Calendar;
+import java.util.Date;
+
+public class GreetingBeanImpl implements GreetingBean {
+
+	private Date date;
+	
+	private Calendar calendar;
+	
+	// We have instantiated  the DAte & calender
+	@Override
+	public String greeting() {
+		// TODO Auto-generated method stub
+		
+		int hour = calendar.get(Calendar.HOUR_OF_DAY);
+		
+		return (hour<12)?"Good Mrng":"Good  Afternoon"+date;
+	}
+
+}

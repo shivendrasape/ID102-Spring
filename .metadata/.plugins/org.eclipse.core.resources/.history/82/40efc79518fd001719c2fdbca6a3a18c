@@ -1,0 +1,16 @@
+package com.myapp.spring.publsiher;
+
+import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class RabbitMQSender {
+
+	@Autowired
+	private AmqpTemplate template;    // 
+	
+	
+	
+	
+}

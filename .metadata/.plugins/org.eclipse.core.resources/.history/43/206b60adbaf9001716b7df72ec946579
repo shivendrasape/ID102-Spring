@@ -1,0 +1,5 @@
+package com.myapp.hibernate.model;
+
+public class CountryLanguage {
+
+}

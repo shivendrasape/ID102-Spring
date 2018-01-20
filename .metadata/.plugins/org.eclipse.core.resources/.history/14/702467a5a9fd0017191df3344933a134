@@ -1,0 +1,30 @@
+package com.myapp.spring.repository;
+
+import java.util.List;
+
+import javax.persistence.LockModeType;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Lock;
+import org.springframework.stereotype.Repository;
+
+import com.myapp.spring.hibernate.model.Flight;
+
+
+
+
+@Repository        // all crud operations are defined in the jpaRepo
+public interface FlightRepository extends JpaRepository<Flight, Long>{
+
+	//@EntityGraph(value="order.flight.graph",type=EntityGraphType.LOAD)
+//	List<Flight> findByOrderNumber(String orderNumber);
+	
+//	@EntityGraph(value="order.flight.graph",type=EntityGraphType.LOAD)	
+	//@Query(name="select o from Order as o JOIN FETCH o.customer")
+	List<Flight> findAll();
+	
+//	@EntityGraph(value="order.flight.graph",type=EntityGraphType.LOAD)
+	@Lock(LockModeType.PESSIMISTIC_READ)
+	Flight findOne(Long arg0);
+	
+}

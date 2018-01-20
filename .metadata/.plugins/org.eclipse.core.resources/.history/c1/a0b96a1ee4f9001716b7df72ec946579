@@ -1,0 +1,13 @@
+package com.myapp.spring.di;
+
+import java.sql.Connection;
+
+public class DataSourceBeanImpl implements DatSourceBean {
+
+	@Override
+	public Connection getConnection() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

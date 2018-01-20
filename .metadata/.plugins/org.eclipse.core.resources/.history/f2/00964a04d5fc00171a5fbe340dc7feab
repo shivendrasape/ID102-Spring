@@ -1,0 +1,126 @@
+package com.myapp.spring.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.hibernate.HibernateException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
+
+import com.myapp.spring.hibernate.model.Order;
+
+@Repository 													// Instead of component annotation
+public class OrderDAOImpl implements OrderDAO {
+
+	@PersistenceContext 									    // Applicable only for em not for other objects
+	private EntityManager em;
+
+	@Autowired
+	private PlatformTransactionManager transactionManager;
+
+	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, rollbackFor = HibernateException.class)
+	@Override
+	public List<Order> findAll() {
+
+		return em.createNamedQuery("OrderFindAll").getResultList();
+	}
+
+	@Override
+//	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, rollbackFor = HibernateException.class)
+	
+	// uncommitted records will never be read // If any hibernate exceptions are
+	// raised then rollback // select it from spring // It is also pointcut+advice
+	// // Transactions uses around advice
+	
+	public void save(Order order) {
+
+	// cannot write txn commit manually ,, we must do it by the use of Spring  conatiner in a way which is done below & so on .. bcoz it is the job of the conatiner not been manager // container is bound with transaction i.e it is not job of dev( entity manager ) -- so we will get shared resources error
+	// Required => responsible for container to start the this operation in txn
+		
+		DefaultTransactionDefinition  def= new DefaultTransactionDefinition();
+		def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+		TransactionStatus status= transactionManager.getTransaction(def);
+		
+		
+		try {
+			em.persist(order);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			transactionManager.rollback(status);
+			throw e;
+		}
+		
+		transactionManager.commit(status);
+		
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, rollbackFor = HibernateException.class)
+	public Order findAnOrder(long id) {
+		
+		return em.find(Order.class, id);
+	}
+
+}
+
+// after advice vs after return(only when returns succesfully)
+// after throwing-- this advice is for logging
+
+// Acid Principles
+
+// Atomicity. In a transaction involving two or more discrete pieces of
+// information, either all of the pieces are committed or none are.
+//
+// Consistency. A transaction either creates a new and valid state of data, or,
+// if any failure occurs, returns all data to its state before the transaction
+// was started.
+//
+// Isolation. A transaction in process and not yet committed must remain
+// isolated from any other transaction.
+//
+// Durability. Committed data is saved by the system such that, even in the
+// event of a failure and system restart, the data is available in its correct
+// state.
+
+//Using Spring Container
+//---------------------
+
+//@Repository 													// Instead of component annotation
+//public class OrderDAOImpl implements OrderDAO {
+//
+//	@PersistenceContext 									    // Applicable only for em not for other objects
+//	private EntityManager em;
+//
+//
+//	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, rollbackFor = HibernateException.class)
+//	@Override
+//	public List<Order> findAll() {
+//
+//		return em.createQuery("from Order").getResultList();
+//	}
+//
+//	@Override
+//	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, rollbackFor = HibernateException.class)
+//	
+//	// uncommitted records will never be read // If any hibernate exceptions are
+//	// raised then rollback // select it from spring // It is also pointcut+advice
+//	// // Transactions uses around advice
+//	
+//	public void save(Order order) {
+//
+//	// cannot write txn commit manually ,, we must do it by the use of Spring  conatiner in a way which is done below & so on .. bcoz it is the job of the conatiner not been manager // container is bound with transaction i.e it is not job of dev( entity manager ) -- so we will get shared resources error
+//	// Required => responsible for container to start the this operation in txn
+//			em.persist(order);
+//	}
+//
+//}
+

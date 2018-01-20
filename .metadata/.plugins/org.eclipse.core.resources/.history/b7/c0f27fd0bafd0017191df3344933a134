@@ -1,0 +1,10 @@
+
+public class Apple implements Comparable<Apple> {
+
+	@Override
+	public int compareTo(Apple o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

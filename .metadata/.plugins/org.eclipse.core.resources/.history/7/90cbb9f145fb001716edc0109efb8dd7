@@ -1,0 +1,30 @@
+package com.myapp.spring.aop;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.springframework.stereotype.Component;
+
+@Component
+
+//@Aspect  
+public class LoginManagerBean {
+	
+	private static ThreadLocal<LoginBean> threadLocal=new ThreadLocal<>();
+	
+	//changes made to one object are not visible to other objects
+	
+	
+	public void login(String username,String password) {
+		
+		LoginBean loginBean=threadLocal.get();
+		if(loginBean==null) {
+			
+			loginBean=new LoginBean(username, password);
+			threadLocal.set(loginBean);
+		}
+	}
+	
+	
+
+}

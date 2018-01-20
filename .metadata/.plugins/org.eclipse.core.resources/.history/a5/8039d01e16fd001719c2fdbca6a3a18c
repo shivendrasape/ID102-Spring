@@ -1,0 +1,30 @@
+package com.myapp.spring.conifg;
+
+import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class RabbitMQConfig {
+	// creation of connection factory is not mandatory in spring boot
+	public ConnectionFactory connectionFactory() {
+
+		CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
+
+		connectionFactory.setHost("localhost");
+		return connectionFactory;
+
+	}
+
+	@Bean
+	public RabbitTemplate rabbitTemplate() {
+
+		return new RabbitTemplate(connectionFactory());
+	}
+
+	public final static String QUEUENAME = "spring-queue";
+	public final static String EXCHANGENAME = "spring-exchange";
+
+}

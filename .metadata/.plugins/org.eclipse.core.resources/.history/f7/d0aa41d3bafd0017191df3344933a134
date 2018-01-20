@@ -1,0 +1,14 @@
+
+public class Apple implements Comparable<Apple> {
+
+	@Override
+	public int compareTo(Apple o) {
+		return 0;
+	}
+
+}
+
+
+class TestApple{
+	
+}

@@ -1,0 +1,10 @@
+package com.myapp.spring;
+
+public class TestSpringDI {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

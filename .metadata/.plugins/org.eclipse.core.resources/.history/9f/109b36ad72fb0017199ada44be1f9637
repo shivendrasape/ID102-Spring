@@ -1,0 +1,37 @@
+package com.myapp.spring.dao;
+
+import java.util.List;
+
+import com.myapp.spring.hibernate.model.Employee;
+import com.myapp.spring.hibernate.model.Projects;
+import com.myapp.spring.hibernate.model.Skills;
+
+public class EmployeeDAOImpl implements EmployeeDAO {
+
+	
+	@Override
+	public void save(Projects projects) {
+		
+
+	}
+
+
+	@Override
+	public void save(Skills skills) {
+		
+
+	}
+
+	@Override
+	public void save(Employee employee) {
+	
+		
+	}
+
+	@Override
+	public List<Employee> findAll() {
+		return null;
+		
+	}
+
+}

@@ -1,0 +1,5 @@
+#Tomcat publish data
+#Sat Jan 20 14:57:28 IST 2018
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\sgu209\\.m2\\repository\\org\\springframework\\spring-web\\4.3.13.RELEASE\\spring-web-4.3.13.RELEASE.jar=C\:\\Users\\sgu209\\Downloads\\apache-tomcat-9.0.2-windows-x64\\apache-tomcat-9.0.2\\wtpwebapps\\spring-hibernate-jpa-mvc\\WEB-INF\\lib\\spring-web-4.3.13.RELEASE.jar
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\sgu209\\.m2\\repository\\org\\apache\\tomcat\\embed\\tomcat-embed-websocket\\8.5.23\\tomcat-embed-websocket-8.5.23.jar=C\:\\Users\\sgu209\\Downloads\\apache-tomcat-9.0.2-windows-x64\\apache-tomcat-9.0.2\\wtpwebapps\\spring-hibernate-jpa-mvc\\WEB-INF\\lib\\tomcat-embed-websocket-8.5.23.jar
+org.eclipse.jst.jee.server\:spring-hibernate-jpa-mvc=C\:\\Users\\sgu209\\Downloads\\apache-tomcat-9.0.2-windows-x64\\apache-tomcat-9.0.2\\wtpwebapps\\spring-hibernate-jpa-mvc

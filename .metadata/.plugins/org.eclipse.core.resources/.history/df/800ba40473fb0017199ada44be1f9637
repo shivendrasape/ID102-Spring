@@ -1,0 +1,34 @@
+package com.myapp.spring;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
+
+import com.myapp.spring.config.AppConfig;
+import com.myapp.spring.dao.EmployeeDAO;
+
+public class TestSpringJpaHibernate {
+
+	public static void main(String[] args) {
+
+		AbstractApplicationContext springContainer = new AnnotationConfigApplicationContext(AppConfig.class);
+
+		EmployeeDAO employeeDao = springContainer.getBean(EmployeeDAO.class);
+		employeeDao.findAll().forEach(System.out::println);
+
+//		Order order = new Order("K123", new Date(), new Date(), "NEW");
+//
+//		Customer customer1 = new Customer("abcd", "Afcdv", "svsvfv@gmail.com");
+//		order.setCustomer(customer1);
+//		orderDao.save(order);
+		
+		Skills skills = new Skills()
+
+		System.out.println("------------------------------------------");
+		System.out.println("------------------------------------------");
+		System.out.println("------------------------------------------");
+
+		// springContainer.close();
+		
+	}
+
+}

@@ -1,0 +1,12 @@
+package com.myapp.spring.di;
+
+import java.sql.Connection;
+
+import javax.sql.DataSource;
+
+public interface DataSourceBean {
+	
+	Connection getConnection(); //  from java.sql
+	
+
+}

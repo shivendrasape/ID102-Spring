@@ -1,0 +1,103 @@
+package com.myapp.spring.hibernate.model;
+
+import javax.persistence.Cacheable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+@Entity
+@Table(name = "Flight")
+@Cacheable(true)
+@Cache(usage=CacheConcurrencyStrategy.READ_WRITE,region="Flight")
+@JsonIdentityInfo(
+		generator=ObjectIdGenerators.PropertyGenerator.class,
+		property="id")
+
+public class Flight {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="FlightNumber")
+	private long id;
+	
+	@Column(name="Source City",nullable=false)
+	private String sourceCity;
+	
+	@Column(name="Destination City",nullable=false)
+	private String destinationCity;
+	
+	@Column(name="Fare",nullable=false)
+	private String fare;
+	
+	@Column(name="duaration",nullable=false)
+	private String duaration;
+	
+    public Flight() {
+	// TODO Auto-generated constructor stub
+}
+
+public Flight(String sourceCity, String destinationCity, String fare, String duaration) {
+	super();
+	this.sourceCity = sourceCity;
+	this.destinationCity = destinationCity;
+	this.fare = fare;
+	this.duaration = duaration;
+}
+
+public long getId() {
+	return id;
+}
+
+private void setId(long id) {
+	this.id = id;
+}
+
+public String getSourceCity() {
+	return sourceCity;
+}
+
+public void setSourceCity(String sourceCity) {
+	this.sourceCity = sourceCity;
+}
+
+public String getDestinationCity() {
+	return destinationCity;
+}
+
+public void setDestinationCity(String destinationCity) {
+	this.destinationCity = destinationCity;
+}
+
+public String getFare() {
+	return fare;
+}
+
+public void setFare(String fare) {
+	this.fare = fare;
+}
+
+public String getDuaration() {
+	return duaration;
+}
+
+public void setDuaration(String duaration) {
+	this.duaration = duaration;
+}
+   
+
+   
+	
+	
+	
+
+
+}

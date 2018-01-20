@@ -1,0 +1,17 @@
+package com.myapp.spring.dao;
+
+import java.util.List;
+
+import com.myapp.spring.hibernate.model.Projects;
+import com.myapp.spring.hibernate.model.Skills;
+
+public interface EmployeeDAO {
+
+	List<Projects> findAllProjects();
+
+	void save(Projects projects);
+
+	List<Skills> findAllSkills();
+
+	void save(Skills skills);
+}

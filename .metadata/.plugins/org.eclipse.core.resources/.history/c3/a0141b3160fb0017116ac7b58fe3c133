@@ -1,0 +1,11 @@
+import java.util.List;
+
+import com.myapp.spring.hibernate.model.Projects;
+
+public interface EmployeeDAO {
+
+	
+	List<Projects> findAll();
+	
+	void save (Projects projects);
+}

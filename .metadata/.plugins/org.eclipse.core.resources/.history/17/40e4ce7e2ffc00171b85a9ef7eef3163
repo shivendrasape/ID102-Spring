@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="spring-hibernate-jpa-mvc">
+        <property name="context-root" value="spring-hibernate-jpa-demo-mvc"/>
+        <property name="java-output-path" value="/spring-hibernate-jpa-mvc/target/classes"/>
+    </wb-module>
+</project-modules>

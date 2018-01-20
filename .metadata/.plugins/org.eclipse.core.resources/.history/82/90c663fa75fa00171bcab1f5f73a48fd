@@ -1,0 +1,7 @@
+package com.myapp.spring;
+
+public class FlightDAOImpl implements FlightDAO {
+
+	
+	
+}

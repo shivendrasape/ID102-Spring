@@ -1,0 +1,10 @@
+package com.myapp.hibernate.model;
+
+public class CountryLanguage {
+
+  private String isOfficial;
+	
+  private double percentage;
+	
+	
+}

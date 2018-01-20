@@ -1,0 +1,15 @@
+package com.myapp.spring.events;
+
+import org.springframework.stereotype.Component;
+
+@Component //Spring Managed bean
+public class MyCustomEventSubscriber {
+
+	
+	public void handleChangeEvents(final MyCustomEvent event) {
+		
+		
+		
+	}
+	
+}

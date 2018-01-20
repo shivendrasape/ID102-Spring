@@ -1,0 +1,34 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class Apple implements Comparable<Apple>{
+
+	private int price; 
+	private int weight;
+	
+	@Override
+	public int compareTo(Apple otherApple) {
+		return ((Integer)this.price).compareTo(otherApple.price);
+	}
+}
+
+class TestApple {
+	public static void main(String[] args) {
+
+		Apple a1 = new Apple();
+		Apple a2 = new Apple();
+		Apple a3 = new Apple();
+		Apple a4 = new Apple();
+
+		
+		List<Apple> basket = new ArrayList<>();
+		
+		basket.addAll(Arrays.asList(a1,a2,a3,a4));
+		
+		Collections.sort(basket);
+		
+		
+	}
+}

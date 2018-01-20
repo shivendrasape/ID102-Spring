@@ -1,0 +1,9 @@
+package com.myapp.spring.events;
+
+import org.springframework.context.ApplicationEvent;
+
+public class MyCustomEvent extends ApplicationEvent {
+
+	
+	
+}

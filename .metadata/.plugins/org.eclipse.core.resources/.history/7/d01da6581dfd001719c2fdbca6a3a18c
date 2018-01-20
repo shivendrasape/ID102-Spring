@@ -1,0 +1,5 @@
+package com.myapp.spring.subscribe;
+
+public class MessageSubscriber {
+
+}

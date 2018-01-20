@@ -1,0 +1,27 @@
+package com.myapp.spring.aop;
+
+import org.springframework.stereotype.Component;
+
+@Component
+
+//@Aspect  
+public class LoginManagerBean {
+	
+	private static ThreadLocal<LoginBean> threadLocal=new ThreadLocal<>();
+	
+	//changes made to one object are not visible to other objects
+	
+	
+	public void login(String username,String password) {
+		
+		LoginBean loginBean=threadLocal.get();
+		if(loginBean==null) {
+			
+			loginBean=new LoginBean(username, password);
+			threadLocal.set(loginBean);
+		}
+	}
+	
+	
+
+}

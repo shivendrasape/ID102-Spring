@@ -1,0 +1,13 @@
+package com.myapp.spring.hibernate.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Skills")
+public class Skills{
+	
+	
+	
+	
+}

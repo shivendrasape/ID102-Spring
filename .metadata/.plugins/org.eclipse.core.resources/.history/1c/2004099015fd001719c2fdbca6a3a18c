@@ -1,0 +1,15 @@
+package com.myapp.spring.conifg;
+
+import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class RabbitMQConfig {
+// creation  of connection factory is not mandatory in spring boot
+	public ConnectionFactory connectionFactory() {
+		
+		CachingConnectionFactory
+	}
+	
+}

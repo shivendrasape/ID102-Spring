@@ -1,0 +1,27 @@
+package com.myapp.hibernate.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Country")
+public class Country {
+
+	private int code;
+	
+	private String capital;
+	
+	private String continent;
+	
+	private int GNP;
+	
+	private int lifeExpectancy;
+	
+	private String localname;
+	
+	private int popualtion;
+	
+	private String region;
+	
+	
+}

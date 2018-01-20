@@ -1,0 +1,115 @@
+package com.myapp.hibernate.model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class CountryLanguage {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+
+	private String isOfficial;
+
+	private double percentage;
+	
+	public CountryLanguage() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+	public CountryLanguage(String isOfficial, double percentage) {
+		super();
+		this.isOfficial = isOfficial;
+		this.percentage = percentage;
+	}
+
+
+
+	public int getId() {
+		return id;
+	}
+
+	private void setId(int id) {
+		this.id = id;
+	}
+
+	public String getIsOfficial() {
+		return isOfficial;
+	}
+
+	public void setIsOfficial(String isOfficial) {
+		this.isOfficial = isOfficial;
+	}
+
+	public double getPercentage() {
+		return percentage;
+	}
+
+	public void setPercentage(double percentage) {
+		this.percentage = percentage;
+	}
+
+    private Country country;
+	
+	
+	public Country getCountry() {
+		return country;
+	}
+	public void setCountry(Country country) {
+		this.country = country;
+	}
+	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + ((isOfficial == null) ? 0 : isOfficial.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof CountryLanguage))
+			return false;
+		CountryLanguage other = (CountryLanguage) obj;
+		if (id != other.id)
+			return false;
+		if (isOfficial == null) {
+			if (other.isOfficial != null)
+				return false;
+		} else if (!isOfficial.equals(other.isOfficial))
+			return false;
+		return true;
+	}
+
+
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("CountryLanguage [id=");
+		builder.append(id);
+		builder.append(", isOfficial=");
+		builder.append(isOfficial);
+		builder.append(", percentage=");
+		builder.append(percentage);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+
+
+}

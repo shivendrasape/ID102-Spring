@@ -1,0 +1,4 @@
+
+public class Apple implements Comparable<Apple> {
+
+}

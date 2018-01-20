@@ -1,0 +1,61 @@
+package com.myapp.spring.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.hibernate.Hibernate;
+import org.hibernate.HibernateException;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.myapp.spring.hibernate.model.Order;
+
+@Repository // Instead of component annotation
+public class OrderDAOImpl implements OrderDAO {
+
+	@PersistenceContext // Applicable only for em not for other objects
+	private EntityManager em;
+
+	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, rollbackFor = HibernateException.class)
+	@Override
+	public List<Order> findAll() {
+
+		return em.createQuery("from Order").getResultList();
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, rollbackFor = HibernateException.class)
+	// uncommitted records will never be read // If any hibernate exceptions are
+	// raised then rollback // select it from spring // It is also pointcut+advice
+	// // Transactions uses around advice
+	public void save(Order order) {
+
+		em.persist(order);
+		
+	}
+
+}
+
+// after advice vs after return(only when returns sucesfully)
+// after throwing-- this advice is for logging
+
+// Acid Principles
+
+// Atomicity. In a transaction involving two or more discrete pieces of
+// information, either all of the pieces are committed or none are.
+//
+// Consistency. A transaction either creates a new and valid state of data, or,
+// if any failure occurs, returns all data to its state before the transaction
+// was started.
+//
+// Isolation. A transaction in process and not yet committed must remain
+// isolated from any other transaction.
+//
+// Durability. Committed data is saved by the system such that, even in the
+// event of a failure and system restart, the data is available in its correct
+// state.
